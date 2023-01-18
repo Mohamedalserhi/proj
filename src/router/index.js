@@ -61,7 +61,10 @@ import EditBlog from "../views/EditBlog.vue"
 
 import EidtVideo from "../views/EidtVideo.vue"
 
-import chat from "../views/chat.vue"
+import chatIndex from "../views/chat/index.vue"
+import chat from "../views/chat/chat.vue"
+import chatChannel from "../views/chat/chatChannel.vue"
+
 import EditPodcast from "../views/EditPodcast.vue"
 
 import ConsultingItem from "../views/ConsultingItem.vue"
@@ -546,9 +549,20 @@ const routes = [
   },
 
   {
-    path: "/chat/:mentionUser",
-    name: "chat",
-    component: chat,
+    path: "/chat",
+    component: chatIndex,
+    children: [
+      {
+        path: "/chat",
+        name: "chat",
+        component: chat,
+      },
+      {
+        path: "/chat/:mentionUser",
+        name: "chatChannel",
+        component: chatChannel,
+      }
+    ]
   },
   
   
